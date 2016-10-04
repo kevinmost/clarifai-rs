@@ -1,20 +1,11 @@
 extern crate chrono;
 extern crate hyper;
 
-use std::cell::{
-    Cell,
-};
+use std::cell::Cell;
 
-use hyper::client::{
-    Client as HttpClient,
-    Request as HttpRequest,
-    Response as HttpResponse,
-};
+use hyper::client::{Client as HttpClient, Request as HttpRequest, Response as HttpResponse};
 
-use chrono::{
-    DateTime,
-    UTC,
-};
+use chrono::{DateTime, UTC};
 
 pub struct Client<'a> {
     pub client_id: String,
@@ -50,7 +41,7 @@ impl<'a> Client<'a> {
             status: None,
             http_response: None,
             result: None,
-        }
+        };
     }
 }
 
@@ -72,10 +63,7 @@ pub struct Status<'a> {
 }
 
 pub mod prediction {
-    use chrono::{
-        DateTime,
-        UTC,
-    };
+    use chrono::{DateTime, UTC};
 
     pub trait Data {}
     pub struct ConceptData {
@@ -99,10 +87,7 @@ pub mod prediction {
 }
 
 pub mod model {
-    use chrono::{
-        DateTime,
-        UTC,
-    };
+    use chrono::{DateTime, UTC};
 
     pub struct Version<'a> {
         id: &'a str,
@@ -126,7 +111,6 @@ pub mod model {
         updated_at: Option<DateTime<UTC>>,
         app_id: Option<String>,
         version: Version<'a>,
-
     }
     impl<'a> Data for ConceptData<'a> {}
     pub struct ColorData {
