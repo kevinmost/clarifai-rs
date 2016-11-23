@@ -1,5 +1,10 @@
 pub mod default;
+pub mod request;
 
+use serde_json;
+use serde::de::{
+    Visitor,
+};
 use chrono::{
     DateTime,
     UTC,
@@ -39,3 +44,8 @@ pub struct ColorModel<'a> {
     pub data: ModelData<'a>,
 }
 impl<'a> Model for ColorModel<'a> {}
+
+struct ModelVisitor;
+impl Visitor for ModelVisitor {
+    type Value = Box<Model>;
+}
